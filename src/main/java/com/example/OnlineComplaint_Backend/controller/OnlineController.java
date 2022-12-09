@@ -54,4 +54,12 @@ public class OnlineController {
         }
         return map;
     }
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/view",consumes = "application/json",produces = "application/json")
+    public List<OnlineUser> UserById(@RequestBody OnlineUser o)
+    {
+        String id=String.valueOf(o.getId());
+        System.out.println(id);
+        return (List<OnlineUser>) dao.UserById(o.getId());
+    }
 }
