@@ -10,4 +10,8 @@ import java.util.List;
 public interface OnlineDao extends CrudRepository<OnlineUser,Integer> {
     @Query(value = "SELECT `id`, `address`, `confirm`, `email`, `name`, `password`, `phone`, `username` FROM `user_detail` WHERE `email`= :email AND `password`= :password",nativeQuery = true)
     List<OnlineUser> UserLogin(@Param("email") String email,@Param("password") String password);
+
+
+    @Query(value = "SELECT `id`, `address`, `confirm`, `email`, `name`, `password`, `phone`, `username` FROM `user_detail` WHERE `id`= :id",nativeQuery = true)
+    List<OnlineUser> UserById(@Param("id") Integer id);
 }
