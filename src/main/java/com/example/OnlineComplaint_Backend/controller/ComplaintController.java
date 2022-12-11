@@ -23,9 +23,18 @@ public class ComplaintController {
         map.put("status","success");
         return map;
     }
+    @CrossOrigin(origins = "*")
     @GetMapping(path = "/viewall")
     public List<Map<String,String>> ViewAllComplaint()
     {
         return (List<Map<String,String>>) dao.ViewAllComplaint();
     }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/mycomplaint",consumes = "application/json",produces = "application/json")
+    public List<Complaints> ViewMyComplaint(@RequestBody Complaints c)
+    {
+        return (List<Complaints>) dao.ViewMyComplaint(c.getUserId());
+    }
+
     }
